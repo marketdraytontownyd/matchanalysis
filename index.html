@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Football Tracker Reports</title>
+  <style>
+    :root{
+      --bg:#0d1016;
+      --panel:#141820;
+      --panel2:#1c2130;
+      --line:#252d3e;
+      --text:#dde2ee;
+      --muted:#7f8aa7;
+      --gold:#f5c842;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:radial-gradient(1000px 500px at 50% -200px, rgba(245,200,66,.18), rgba(13,16,22,0) 60%) , var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+    .header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      margin-bottom:18px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;}
+    .logo{
+      width:38px;height:38px;border-radius:10px;
+      background:linear-gradient(135deg, rgba(245,200,66,.9), rgba(245,200,66,.2));
+      display:grid;place-items:center;color:#0d1016;font-weight:900;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    h1{font-size:18px;margin:0;letter-spacing:.5px}
+    .sub{color:var(--muted);font-size:12px;margin-top:2px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:1px solid var(--line);background:transparent;color:var(--text);
+      padding:9px 12px;border-radius:10px;cursor:pointer;font-size:12px;
+    }
+    .btn.primary{
+      background:var(--gold);border-color:rgba(245,200,66,.35);color:#0d1016;font-weight:700;
+    }
+    .panel{
+      background:linear-gradient(180deg, rgba(20,24,32,.9), rgba(20,24,32,.72));
+      border:1px solid var(--line);border-radius:16px;padding:14px 14px 10px;
+      box-shadow:0 16px 50px rgba(0,0,0,.35);
+    }
+    .toolbar{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      margin-bottom:12px;
+    }
+    .search{
+      flex:1;min-width:220px;
+      display:flex;align-items:center;gap:10px;
+      background:var(--panel2);border:1px solid var(--line);
+      padding:10px 12px;border-radius:12px;
+    }
+    .search input{
+      width:100%;border:0;outline:0;background:transparent;color:var(--text);
+      font-size:13px;
+    }
+    .pill{
+      font-size:11px;color:var(--muted);
+      border:1px solid var(--line);background:rgba(28,33,48,.55);
+      padding:8px 10px;border-radius:999px;
+      white-space:nowrap;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (max-width:560px){.grid{grid-template-columns:1fr;}}
+    .card{
+      background:rgba(28,33,48,.55);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      transition:transform .12s ease, border-color .12s ease;
+    }
+    .card:hover{transform:translateY(-2px);border-color:rgba(245,200,66,.35)}
+    .card h3{margin:0 0 6px;font-size:13px}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 10px}
+    .meta .tag{
+      font-size:11px;color:var(--muted);
+      border:1px solid var(--line);
+      padding:6px 8px;border-radius:999px;
+    }
+    .links{display:flex;gap:8px;flex-wrap:wrap}
+    a.link{
+      display:inline-flex;align-items:center;gap:8px;
+      text-decoration:none;
+      background:#0d1016;border:1px solid var(--line);
+      color:var(--text);
+      padding:8px 10px;border-radius:10px;
+      font-size:12px;
+    }
+    a.link.primary{background:rgba(245,200,66,.12);border-color:rgba(245,200,66,.35)}
+    .empty{padding:30px 10px;color:var(--muted);text-align:center}
+    .footer{
+      margin-top:14px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap
+    }
+    code.kbd{
+      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:11px;background:#0d1016;border:1px solid var(--line);
+      padding:3px 6px;border-radius:8px;color:var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">⚽</div>
+        <div>
+          <h1>FOOTBALL TRACKER REPORTS</h1>
+          <div class="sub">Camera Position &amp; Speed Analysis — report index</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="sortBtn" type="button">Sort: Newest</button>
+        <button class="btn primary" id="refreshBtn" type="button">Refresh</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="toolbar">
+        <div class="search">
+          <span style="color:var(--muted)">🔎</span>
+          <input id="q" placeholder="Search team, opponent, date, filename…" autocomplete="off" />
+        </div>
+        <div class="pill" id="countPill">Loading…</div>
+      </div>
+
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty" style="display:none">
+        No reports found. Make sure <code class="kbd">reports.json</code> exists in this folder.
+      </div>
+
+      <div class="footer">
+        <div>Tip: if your browser blocks loading <code class="kbd">reports.json</code>, open the folder via a local server.</div>
+        <div>Expected files: <code class="kbd">index.html</code> + <code class="kbd">reports.json</code> + report HTMLs</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const state = { sort: 'newest', reports: [] };
+
+  function bySort(a,b){
+    const da = new Date(a.generated_at || a.date || 0).getTime();
+    const db = new Date(b.generated_at || b.date || 0).getTime();
+    if(state.sort === 'newest') return db - da;
+    if(state.sort === 'oldest') return da - db;
+    return (a.title||a.file).localeCompare(b.title||b.file);
+  }
+
+  function render(){
+    const q = (document.getElementById('q').value || '').toLowerCase().trim();
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+
+    let items = state.reports.slice().sort(bySort);
+    if(q){
+      items = items.filter(r => {
+        const hay = [r.title, r.team, r.opponent, r.date, r.file, r.notes]
+          .filter(Boolean).join(' ').toLowerCase();
+        return hay.includes(q);
+      });
+    }
+
+    document.getElementById('countPill').textContent = `${items.length} report${items.length===1?'':'s'}`;
+    grid.innerHTML = '';
+    empty.style.display = items.length ? 'none' : 'block';
+
+    for(const r of items){
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const title = r.title || (r.team && r.opponent ? `${r.team} vs ${r.opponent}` : r.file);
+      card.innerHTML = `
+        <h3>${escapeHtml(title)}</h3>
+        <div class="meta">
+          ${r.date ? `<span class="tag">${escapeHtml(r.date)}</span>` : ''}
+          ${r.team ? `<span class="tag">${escapeHtml(r.team)}</span>` : ''}
+          ${r.opponent ? `<span class="tag">vs ${escapeHtml(r.opponent)}</span>` : ''}
+          ${r.period_window ? `<span class="tag">${escapeHtml(r.period_window)}</span>` : ''}
+        </div>
+        <div class="links">
+          <a class="link primary" href="${encodeURI(r.file)}">Open report</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+  }
+
+  async function load(){
+    try{
+      const res = await fetch('reports.json', { cache: 'no-store' });
+      if(!res.ok) throw new Error('Missing reports.json');
+      const data = await res.json();
+      state.reports = Array.isArray(data) ? data : (data.reports || []);
+    }catch(e){
+      state.reports = [];
+    }
+    render();
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  document.getElementById('q').addEventListener('input', render);
+  document.getElementById('refreshBtn').addEventListener('click', load);
+  document.getElementById('sortBtn').addEventListener('click', () => {
+    state.sort = state.sort === 'newest' ? 'oldest' : 'newest';
+    document.getElementById('sortBtn').textContent = `Sort: ${state.sort === 'newest' ? 'Newest' : 'Oldest'}`;
+    render();
+  });
+
+  load();
+</script>
+</body>
+</html>
