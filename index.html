@@ -6,13 +6,8 @@
   <title>Football Tracker Reports</title>
   <style>
     :root{
-      --bg:#0d1016;
-      --panel:#141820;
-      --panel2:#1c2130;
-      --line:#252d3e;
-      --text:#dde2ee;
-      --muted:#7f8aa7;
-      --gold:#f5c842;
+      --bg:#0d1016; --panel:#141820; --panel2:#1c2130; --line:#252d3e;
+      --text:#dde2ee; --muted:#7f8aa7; --gold:#f5c842;
     }
     *{box-sizing:border-box}
     body{
@@ -22,11 +17,8 @@
       color:var(--text);
     }
     .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
-    .header{
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
-      margin-bottom:18px;
-    }
-    .brand{display:flex;align-items:center;gap:12px;}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
     .logo{
       width:38px;height:38px;border-radius:10px;
       background:linear-gradient(135deg, rgba(245,200,66,.9), rgba(245,200,66,.2));
@@ -40,39 +32,21 @@
       appearance:none;border:1px solid var(--line);background:transparent;color:var(--text);
       padding:9px 12px;border-radius:10px;cursor:pointer;font-size:12px;
     }
-    .btn.primary{
-      background:var(--gold);border-color:rgba(245,200,66,.35);color:#0d1016;font-weight:700;
-    }
+    .btn.primary{background:var(--gold);border-color:rgba(245,200,66,.35);color:#0d1016;font-weight:700}
     .panel{
       background:linear-gradient(180deg, rgba(20,24,32,.9), rgba(20,24,32,.72));
       border:1px solid var(--line);border-radius:16px;padding:14px 14px 10px;
       box-shadow:0 16px 50px rgba(0,0,0,.35);
     }
-    .toolbar{
-      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
-      margin-bottom:12px;
-    }
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:12px}
     .search{
-      flex:1;min-width:220px;
-      display:flex;align-items:center;gap:10px;
+      flex:1;min-width:220px;display:flex;align-items:center;gap:10px;
       background:var(--panel2);border:1px solid var(--line);
       padding:10px 12px;border-radius:12px;
     }
-    .search input{
-      width:100%;border:0;outline:0;background:transparent;color:var(--text);
-      font-size:13px;
-    }
-    .pill{
-      font-size:11px;color:var(--muted);
-      border:1px solid var(--line);background:rgba(28,33,48,.55);
-      padding:8px 10px;border-radius:999px;
-      white-space:nowrap;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:12px;
-    }
+    .search input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:13px}
+    .pill{font-size:11px;color:var(--muted);border:1px solid var(--line);background:rgba(28,33,48,.55);padding:8px 10px;border-radius:999px;white-space:nowrap}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
     @media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
     @media (max-width:560px){.grid{grid-template-columns:1fr;}}
     .card{
@@ -85,30 +59,18 @@
     .card:hover{transform:translateY(-2px);border-color:rgba(245,200,66,.35)}
     .card h3{margin:0 0 6px;font-size:13px}
     .meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 10px}
-    .meta .tag{
-      font-size:11px;color:var(--muted);
-      border:1px solid var(--line);
-      padding:6px 8px;border-radius:999px;
-    }
+    .meta .tag{font-size:11px;color:var(--muted);border:1px solid var(--line);padding:6px 8px;border-radius:999px}
     .links{display:flex;gap:8px;flex-wrap:wrap}
     a.link{
       display:inline-flex;align-items:center;gap:8px;
-      text-decoration:none;
-      background:#0d1016;border:1px solid var(--line);
-      color:var(--text);
-      padding:8px 10px;border-radius:10px;
-      font-size:12px;
+      text-decoration:none;background:#0d1016;border:1px solid var(--line);
+      color:var(--text);padding:8px 10px;border-radius:10px;font-size:12px;
     }
     a.link.primary{background:rgba(245,200,66,.12);border-color:rgba(245,200,66,.35)}
+    a.link.youtube{background:rgba(255,0,0,.10);border-color:rgba(255,0,0,.25)}
     .empty{padding:30px 10px;color:var(--muted);text-align:center}
-    .footer{
-      margin-top:14px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap
-    }
-    code.kbd{
-      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size:11px;background:#0d1016;border:1px solid var(--line);
-      padding:3px 6px;border-radius:8px;color:var(--text);
-    }
+    .footer{margin-top:14px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    code.kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;font-size:11px;background:#0d1016;border:1px solid var(--line);padding:3px 6px;border-radius:8px;color:var(--text)}
   </style>
 </head>
 <body>
@@ -118,7 +80,7 @@
         <div class="logo">⚽</div>
         <div>
           <h1>FOOTBALL TRACKER REPORTS</h1>
-          <div class="sub">Camera Position &amp; Speed Analysis — report index</div>
+          <div class="sub">Market Drayton Town Youth Development — U14</div>
         </div>
       </div>
       <div class="actions">
@@ -142,8 +104,8 @@
       </div>
 
       <div class="footer">
-        <div>Tip: if your browser blocks loading <code class="kbd">reports.json</code>, open the folder via a local server.</div>
-        <div>Expected files: <code class="kbd">index.html</code> + <code class="kbd">reports.json</code> + report HTMLs</div>
+        <div>Tip: if your browser blocks loading <code class="kbd">reports.json</code>, open via a local server.</div>
+        <div>Expected: <code class="kbd">index.html</code> + <code class="kbd">reports.json</code> + report HTMLs</div>
       </div>
     </div>
   </div>
@@ -156,7 +118,7 @@
     const db = new Date(b.generated_at || b.date || 0).getTime();
     if(state.sort === 'newest') return db - da;
     if(state.sort === 'oldest') return da - db;
-    return (a.title||a.file).localeCompare(b.title||b.file);
+    return (a.title||a.analysis_file).localeCompare(b.title||b.analysis_file);
   }
 
   function render(){
@@ -167,7 +129,7 @@
     let items = state.reports.slice().sort(bySort);
     if(q){
       items = items.filter(r => {
-        const hay = [r.title, r.team, r.opponent, r.date, r.file, r.notes]
+        const hay = [r.title, r.team, r.opponent, r.date, r.analysis_file, r.coaching_file]
           .filter(Boolean).join(' ').toLowerCase();
         return hay.includes(q);
       });
@@ -181,7 +143,7 @@
       const card = document.createElement('div');
       card.className = 'card';
 
-      const title = r.title || (r.team && r.opponent ? `${r.team} vs ${r.opponent}` : r.file);
+      const title = r.title || (r.team && r.opponent ? `${r.team} vs ${r.opponent}` : r.analysis_file);
       card.innerHTML = `
         <h3>${escapeHtml(title)}</h3>
         <div class="meta">
@@ -191,7 +153,9 @@
           ${r.period_window ? `<span class="tag">${escapeHtml(r.period_window)}</span>` : ''}
         </div>
         <div class="links">
-          <a class="link primary" href="${encodeURI(r.file)}">Open report</a>
+          ${r.analysis_file ? `<a class="link primary" href="${encodeURI(r.analysis_file)}">📊 Analysis</a>` : ''}
+          ${r.coaching_file ? `<a class="link" href="${encodeURI(r.coaching_file)}">🧠 Coaching</a>` : ''}
+          ${r.youtube_url ? `<a class="link youtube" href="${encodeURI(r.youtube_url)}" target="_blank" rel="noopener">▶ Video</a>` : ''}
         </div>
       `;
       grid.appendChild(card);

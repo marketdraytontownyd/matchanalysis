@@ -1,11 +1,13 @@
 [
   {
-    "file": "MDTYD_U14_vs_Wolverhampton_Olympic_2026-02-21.html",
+    "analysis_file": "MDTYD_U14_vs_Wolverhampton_Olympic_2026-02-21.html",
+    "coaching_file": "coaching-report.html",
     "title": "MDTYD U14 vs Wolverhampton Olympic",
     "date": "21 Feb 2026",
     "team": "MDTYD U14",
     "opponent": "Wolverhampton Olympic",
     "period_window": "5 min",
-    "generated_at": "2026-02-21T13:40:00Z"
+    "generated_at": "2026-02-21T13:40:00Z",
+    "youtube_url": "https://www.youtube.com/watch?v=xuuCwswCAe8"
   }
 ]
