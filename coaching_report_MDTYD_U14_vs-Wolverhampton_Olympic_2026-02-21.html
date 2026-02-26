@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coaching Report — Market Drayton Town Youth Development U14</title>
+  <style>
+    :root{
+      --bg:#0d1016; --panel:#141820; --panel2:#1c2130; --line:#252d3e;
+      --text:#dde2ee; --muted:#7f8aa7; --gold:#f5c842;
+      --bad:#ff6b6b; --good:#4cd964;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:radial-gradient(1000px 520px at 50% -240px, rgba(245,200,66,.18), rgba(13,16,22,0) 60%) , var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1040px;margin:0 auto;padding:18px 16px 60px}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      background:linear-gradient(180deg, rgba(20,24,32,.92), rgba(20,24,32,.72));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px 14px;
+      box-shadow:0 16px 50px rgba(0,0,0,.35);
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .badge{
+      width:44px;height:44px;border-radius:12px;
+      border:1px solid rgba(245,200,66,.35);
+      background:#0d1016;
+      display:grid;place-items:center;
+      overflow:hidden;
+    }
+    .badge img{width:100%;height:100%;object-fit:contain;display:block}
+    .brandText{min-width:0}
+    .brandText .club{font-size:12px;color:var(--muted);letter-spacing:.3px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brandText .team{font-size:16px;font-weight:800;letter-spacing:.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .btn{
+      appearance:none;border:1px solid var(--line);background:#0d1016;color:var(--text);
+      padding:10px 12px;border-radius:12px;cursor:pointer;font-size:12px;text-decoration:none;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .btn.primary{background:var(--gold);color:#0d1016;border-color:rgba(245,200,66,.35);font-weight:800}
+    .btn:hover{border-color:rgba(245,200,66,.35)}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:14px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .card{
+      background:linear-gradient(180deg, rgba(20,24,32,.9), rgba(20,24,32,.72));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      box-shadow:0 16px 50px rgba(0,0,0,.25);
+    }
+    h2{font-size:13px;margin:0 0 10px;letter-spacing:.3px}
+    .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    @media (max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    .kpi{background:rgba(28,33,48,.55);border:1px solid var(--line);border-radius:14px;padding:10px}
+    .kpi .label{font-size:11px;color:var(--muted)}
+    .kpi .value{font-size:14px;font-weight:900;margin-top:6px}
+    .pillRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .pill{font-size:11px;color:var(--muted);border:1px solid var(--line);background:rgba(28,33,48,.55);padding:7px 10px;border-radius:999px;white-space:nowrap}
+    .sectionTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+    .muted{color:var(--muted);font-size:12px;line-height:1.45}
+    ul{margin:8px 0 0 18px;color:var(--text)}
+    li{margin:6px 0}
+    .callout{margin-top:10px;border:1px solid rgba(245,200,66,.35);background:rgba(245,200,66,.08);border-radius:14px;padding:10px 12px;font-size:12px;color:var(--text);}
+    table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:rgba(28,33,48,.55);font-size:12px}
+    th, td{padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{color:var(--muted);text-align:left;background:rgba(28,33,48,.75)}
+    tr:last-child td{border-bottom:0}
+    .tag{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;border:1px solid var(--line);background:#0d1016;color:var(--text);font-size:11px;white-space:nowrap}
+    .tag.good{border-color:rgba(76,217,100,.35);background:rgba(76,217,100,.10)}
+    .tag.bad{border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.10)}
+    .tag.mid{border-color:rgba(245,200,66,.35);background:rgba(245,200,66,.10)}
+    .footer{margin-top:12px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    code.kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;font-size:11px;background:#0d1016;border:1px solid var(--line);padding:3px 6px;border-radius:8px;color:var(--text)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="badge"><img src="MDTFC-BADGE 2024.png" alt="MDTFC badge" /></div>
+        <div class="brandText">
+          <div class="club">Market Drayton Town Youth Development</div>
+          <div class="team">U14 — Coaching Report</div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="match-report.html">📊 Full Tracker Report</a>
+        <a class="btn primary" href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" rel="noopener">▶ Full Match Video</a>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="sectionTitle">
+          <h2>Match Snapshot</h2>
+          <div class="pill">21 Feb 2026</div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi"><div class="label">Fixture</div><div class="value">MDTYD U14 vs Wolverhampton Olympic</div></div>
+          <div class="kpi"><div class="label">Score</div><div class="value">3–0</div></div>
+          <div class="kpi"><div class="label">Period Window</div><div class="value">5 min</div></div>
+          <div class="kpi"><div class="label">Half Length</div><div class="value">35 min</div></div>
+        </div>
+
+        <div class="pillRow">
+          <span class="pill">H1: 12:11:47 → 12:47:37</span>
+          <span class="pill">HT: 12:47:37 → 12:54:20</span>
+          <span class="pill">H2: 12:54:20 → 13:33:49</span>
+        </div>
+
+        <div class="callout"><strong>Coach focus (quick read):</strong> Territory profile: Att 29.4%, Mid 37.1%, Def 33.5%. With a 3–0 win, this suggests efficient attacking and strong game management rather than constant high territory.</div>
+
+        <h2 style="margin-top:14px">Key Findings</h2>
+        <ul>
+          <li>Territory was shared — the 3–0 came from efficiency and game control, not constant final-third time.</li>
+          <li>Top pressure blocks were mid/late game; review shape/spacing around those moments (esp. around the penalty spell).</li>
+          <li>High middle-third share suggests good structure and an ability to manage space once ahead.</li>
+        </ul>
+
+        <h2 style="margin-top:14px">Next Training Actions</h2>
+        <ul>
+          <li><strong>Out of possession:</strong> rehearse defending the box after transitions (fullback recovery + midfield screen).</li>
+          <li><strong>In possession:</strong> build “release” patterns to escape pressure (GK/CB to wide + third-man run).</li>
+          <li><strong>Transitions:</strong> 5-second counter-press cue when losing it; otherwise drop quickly into shape.</li>
+        </ul>
+
+        <div class="footer">
+          <div>Generated by Football Tracker Analyser</div>
+          <div><code class="kbd">MDTYD-U14-2026-02-21</code></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sectionTitle">
+          <h2>Notable Moments</h2>
+          <div class="muted">Use these timestamps as “review points” in your video.</div>
+        </div>
+
+        <table aria-label="notable moments">
+          <thead><tr><th style="width:120px">Time</th><th>Moment</th><th style="width:140px">Tag</th></tr></thead>
+          <tbody>
+            <tr><td>13:09–13:10</td><td>Penalty concession spell (expected defensive phase).</td><td><span class='tag bad'>Under pressure</span></td></tr><tr><td>0–5 (playing min)</td><td>Highest attacking-territory block: H1 0–5 (Att 50.8%, Mom 27.6).</td><td><span class='tag good'>Dominant phase</span></td></tr><tr><td>65–70 (playing min)</td><td>Highest defensive-territory block: H2 65–70 (Def 68.2%, Mom -49.8).</td><td><span class='tag bad'>Under pressure</span></td></tr>
+          </tbody>
+        </table>
+
+        <h2 style="margin-top:14px">5-Minute Phases (territory proxy)</h2>
+        <div class="muted">Derived from camera yaw (20Hz) mapped onto pitch thirds with a simple perspective model.</div>
+
+        <table aria-label="five minute phases" style="margin-top:10px">
+          <thead>
+            <tr>
+              <th style="width:60px">Half</th>
+              <th style="width:95px">Min</th>
+              <th>Att</th>
+              <th>Mid</th>
+              <th>Def</th>
+              <th style="width:90px">Momentum</th>
+              <th style="width:140px">Phase</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>0–5</td><td>50.8%</td><td>26.1%</td><td>23.2%</td><td>+27.6</td><td><span class='tag '>Balanced</span></td></tr><tr><td>1</td><td>5–10</td><td>33.8%</td><td>31.9%</td><td>34.4%</td><td>-0.6</td><td><span class='tag '>Balanced</span></td></tr><tr><td>1</td><td>10–15</td><td>33.7%</td><td>53.7%</td><td>12.6%</td><td>+21.1</td><td><span class='tag '>Balanced</span></td></tr><tr><td>1</td><td>15–20</td><td>35.8%</td><td>43.6%</td><td>20.5%</td><td>+15.3</td><td><span class='tag '>Balanced</span></td></tr><tr><td>1</td><td>20–25</td><td>32.5%</td><td>38.8%</td><td>28.7%</td><td>+3.8</td><td><span class='tag '>Balanced</span></td></tr><tr><td>1</td><td>25–30</td><td>9.6%</td><td>42.4%</td><td>48.0%</td><td>-38.4</td><td><span class='tag '>Balanced</span></td></tr><tr><td>1</td><td>30–35</td><td>37.7%</td><td>53.6%</td><td>8.7%</td><td>+29.0</td><td><span class='tag '>Balanced</span></td></tr><tr><td>1</td><td>35–40</td><td>24.5%</td><td>42.5%</td><td>33.0%</td><td>-8.5</td><td><span class='tag '>Balanced</span></td></tr><tr><td>2</td><td>35–40</td><td>23.8%</td><td>42.9%</td><td>33.3%</td><td>-9.5</td><td><span class='tag '>Balanced</span></td></tr><tr><td>2</td><td>40–45</td><td>23.4%</td><td>27.9%</td><td>48.8%</td><td>-25.4</td><td><span class='tag '>Balanced</span></td></tr><tr><td>2</td><td>45–50</td><td>37.6%</td><td>49.4%</td><td>13.0%</td><td>+24.6</td><td><span class='tag '>Balanced</span></td></tr><tr><td>2</td><td>50–55</td><td>19.2%</td><td>33.0%</td><td>47.7%</td><td>-28.5</td><td><span class='tag '>Balanced</span></td></tr><tr><td>2</td><td>55–60</td><td>15.9%</td><td>42.5%</td><td>41.6%</td><td>-25.7</td><td><span class='tag '>Balanced</span></td></tr><tr><td>2</td><td>60–65</td><td>47.5%</td><td>27.2%</td><td>25.3%</td><td>+22.2</td><td><span class='tag '>Balanced</span></td></tr><tr><td>2</td><td>65–70</td><td>18.4%</td><td>13.3%</td><td>68.2%</td><td>-49.8</td><td><span class='tag bad'>Under Pressure</span></td></tr><tr><td>2</td><td>70–75</td><td>23.8%</td><td>25.7%</td><td>50.6%</td><td>-26.8</td><td><span class='tag '>Balanced</span></td></tr><tr><td>2</td><td>75–80</td><td>0.0%</td><td>100.0%</td><td>0.0%</td><td>+0.0</td><td><span class='tag mid'>Midfield Control</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="footer">
+          <div>Penalty window mix (13:09–13:10): Att 0% · Mid 0% · Def 100.0%</div>
+          <div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
