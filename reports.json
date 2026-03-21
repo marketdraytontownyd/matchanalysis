@@ -31,5 +31,15 @@
     "period_window": "5 min",
     "generated_at": "2026-03-17T14:50:41Z",
     "youtube_url": "https://www.youtube.com/watch?v=CEDRTex6qoI"
+  },
+  {
+    "analysis_file": "analysis_MDTYD_vs_Newcastle_Town_2026-03-21.html",
+    "coaching_file": "coaching_MDTYD_vs_Newcastle_Town_2026-03-21.html",
+    "title": "MDTYD vs Newcastle Town",
+    "date": "21 Mar 2026",
+    "team": "MDTYD",
+    "opponent": "Newcastle Town",
+    "period_window": "5 min",
+    "generated_at": "2026-03-21T13:36:00Z"
   }
 ]
